@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <title>jeu de plateau</title>
+</head>
+<body>
+        <header>
+                <h1>Plateau Game</h1>
+        </header>
+
+              <!-- Partie de l'affichage des armes pour en savoir plus sur leur utilités -->
+              <div id="armes">
+                    <div class="arme">
+                        <img src="icon/knife.png" alt="knife">
+                        <br>
+                        5 points en moins
+                    </div>
+                    <div class="arme">
+                        <img src="icon/eyeball.png" alt="eyeball">
+                        <br>
+                        10 points en moins
+                    </div>
+                    <div class="arme">
+                        <img src="icon/poison.png" alt="poison">
+                        <br>
+                        10 points en plus
+                    </div>
+                    <div class="arme">
+                        <img src="icon/trident.png" alt="">
+                        <br>
+                        20 points en moins
+                    </div>
+                </div>
+              <!-- Partie où sera générée la carte, les armes ainsi que les joueurs -->
+              <br><br>
+              <div id="container">
+                <!-- <canvas	 id="plateau" width="600" height="600"></canvas> -->
+
+              </div>
+
+              <div id="plateau">
+                    <table id="tableau"></table>
+              </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <!-- Affichage des joueurs en bas ainsi que leurs informations     -->
+            <div id="lesJoueurs">
+                <div id="joueur1">
+                    <img src="icon/Mizop.png" alt="">
+                    <br>
+                    Mizop : <strong id="vie1"></strong> points
+                </div>
+                <div id="commencerJeu">
+                    <a href="" id="start">Commencer</a>
+                    <br><br>
+                    <a href="" id="restart">Rejouer</a>
+                    <br><br>
+                    <a href="" id="close">Terminer</a>
+                    <br>
+                </div>
+                <div id="joueur2">
+                    <img src="icon/Bibaxx.png" alt="">
+                    <br>
+                    Bibaxx : <strong id="vie2"></strong> points
+                </div>
+            </div>
+            <h2 id="number">0</h2>
+            <button id='bouton'>clique moi</button>
+
+            <br><br><br><br><br><br>
+            <footer> Copyright, tous droits réservés. Nadèche JOSEPH</footer>
+</body>
+<script src="js/joueurs.js"></script>
+<script src="js/arme.js"></script>
+<script src="js/aireJeu.js"></script>
+<script src="js/main.js"></script>
+
+</html>
