@@ -1,20 +1,29 @@
 
-// Au début chaque joueur est crédité de 100 points de vie
-var pointsDeVie = 100;
-document.getElementById("vie1").innerHTML = pointsDeVie;
-document.getElementById("vie2").innerHTML = pointsDeVie;
-
-
 // ************* PARTIE OÙ LA CARTE EST GÉNÉRÉE AVEC LES CASE VIDE ET LES CASES GRISES EN TERME D'OBSTACLES
+
+
+/* New start */
 const area = new AireJeu(12, 12, 20);
-area.creationColonne();
-area.creationCaseGrise();
 
+// liste des armes 
+let tableauArmes = [
+    {
+        nom: "knife",
+        degats: 5
+    },{
+        nom: "trident",
+        degats: 20
+    },{
+        nom: "eyeball",
+        degats: 10
+    },{
+        nom: "poison",
+        degats: 10
+    }];
 
-// gestion des armes
-const mesArmes = new arme("Knife", 10);
-mesArmes.genererArme();
+let joueur1 = new Joueur(1, 'mizop', 100);
+let joueur2 = new Joueur(2, 'bibaxx', 100)
 
-// gestion des joueurs
-const mesJoueurs = new joueur(10);
-mesJoueurs.genererJoueur();
+let partie = new Partie(area, tableauArmes, joueur1, joueur2);  
+partie.miseEnplace();
+partie.jouer();

@@ -3,77 +3,76 @@
 // *************GESTION DE LA PARTIE DES JOUEURS POUR LA CRÉATION, LA GENERATION ET L'AFFICHAGE*************** //
 
 
-class joueur{
+class Joueur{
     // CHAQUE joueur à une image qui lui est propre donc il faut la mettre à la création de chaque objet de type joueur
-    constructor ( vie){
+    constructor (numero, nom, vie){
+        this.numero = numero
+        this.nom = nom;
         this._vie = vie;
+        this.position = {x: undefined, y: undefined};
+        this.caseVie = document.getElementById('vie'+this.numero);
+        this.caseVie.textContent = this._vie;
     }
 
 
-    genererJoueur(){
-        // création d'un tableau qui va stocker mes images d'armes
-        let tableauJoueurs=["bibaxx","mizop"];
+    deplacementDisponible(){
 
-        let countJoueur = 0;
-        while(countJoueur < 2) {
-            var XcaseJoueur = Math.floor(Math.random() * 10);
-            var YcaseJoueur = Math.floor(Math.random() * 10);
-            // Test pour s'assurer de la bonne génération aléatoire des indices des cases obstacles
-            console.log('Case Joueur' + countJoueur + ' : X = ' + XcaseJoueur + ' Y = ' + YcaseJoueur);
-            if($('td#UneCase' + XcaseJoueur + YcaseJoueur).hasClass('libre')){
-                $('td#UneCase' + XcaseJoueur + YcaseJoueur).removeClass('libre').addClass('UnJoueur').addClass('occuper').addClass(tableauJoueurs[countJoueur]);
-                countJoueur++
+        for(let n = 1; n <= 3; n++){
+            if($('td#UneCase-' + (this.position.x) + '-' + (this.position.y+n)).hasClass('libre')){
+                $('td#UneCase-' + (this.position.x) + '-' + (this.position.y+n)).addClass('surbrillance');
             }else{
-                console.log("occupied");
+                break;
             }
-
         }
 
-        if($('libre')){
-            for (let n = 1; n <= 3; n++) {
-                $('td#UneCase' + (XcaseJoueur) + (YcaseJoueur+n)).addClass('surbrillance');
-                $('td#UneCase' + (XcaseJoueur+n) + (YcaseJoueur)).addClass('surbrillance');
-                $('td#UneCase' + (XcaseJoueur) + (YcaseJoueur-n)).addClass('surbrillance');
-                $('td#UneCase' + (XcaseJoueur-n) + (YcaseJoueur)).addClass('surbrillance');
+        for(let n = 1; n <= 3; n++){
+            if($('td#UneCase-' + (this.position.x+n) + '-' + (this.position.y)).hasClass('libre')){
+                $('td#UneCase-' + (this.position.x+n) + '-' + (this.position.y)).addClass('surbrillance');
+            }else{
+                break;
+            }
+        }
+
+        for(let n = 1; n <= 3; n++){
+            if($('td#UneCase-' + (this.position.x) + '-' + (this.position.y-n)).hasClass('libre')){
+                $('td#UneCase-' + (this.position.x) + '-' + (this.position.y-n)).addClass('surbrillance');
+            }else{
+                break;
+            }
+        }
+
+        for(let n = 1; n <= 3; n++){
+            if($('td#UneCase-' + (this.position.x-n) + '-' + (this.position.y)).hasClass('libre')){
+                $('td#UneCase-' + (this.position.x-n) + '-' + (this.position.y)).addClass('surbrillance');
+            }else{
+                break;
             }
         }
 
     }
 
+    move(positionX, positionY){
+        this.position = {x: positionX, y:positionY};
+        console.log(this.position);
+    }
 
+    turn(){
+       let availableMoveCases = Array.from(document.getElementsByClassName('surbrillance'));
+       //console.log(availableMoveCases);
+       availableMoveCases.forEach(element => {
+            element.addEventListener('click', () =>{
+                console.log('cliqué', element);
+                let tableau = element.id.split("-");
+                console.log("tableau", tableau);
+                this.move(parseInt(tableau[1]), parseInt(tableau[2]));
 
-    deplacement(){
-       
-
+                let event = new Event("endTurn", {bubbles:true});
+                document.dispatchEvent(event);
+            });
+       });
     }
 
 }
 
 
 
-
-const headerTag = document.getElementById('number');
-
-headerTag.addEventListener('numberChanged', function(e){
-    headerTag.textContent = e.detail.number;
-    headerTag.style.color = e.detail.textColor;
-});
-
-function changeNumber(n, c) {
-    const event = new CustomEvent('numberChanged', {
-        detail: {
-            number: n,
-            textColor: c
-        }
-    });
-
-    headerTag.dispatchEvent(event);
-}
-
-//document.getElementById('bouton').addEventListener('click',changeNumber(26, 'grey'));
-
-const cliq = document.getElementById('bouton');
-cliq.addEventListener('click', function(){
-    //alert('je viens de cliquer sur le bouton');
-    changeNumber(30, 'red');
-})

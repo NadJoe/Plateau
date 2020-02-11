@@ -52,9 +52,16 @@
               <!-- Affichage des joueurs en bas ainsi que leurs informations     -->
             <div id="lesJoueurs">
                 <div id="joueur1">
-                    <img src="icon/Mizop.png" alt="">
-                    <br>
-                    Mizop : <strong id="vie1"></strong> points
+                    <div id="bloc1Mizop">
+                            <img src="icon/Mizop.png" alt="">
+                            <br>
+                            Mizop : <strong id="vie1"></strong> points
+                    </div>
+                    <div id="bloc2Mizop">
+                            <img src="icon/Armemizop.png" alt="" id='image2'>
+                            <br>
+                            Mon arme
+                    </div>
                 </div>
                 <div id="commencerJeu">
                     <a href="" id="start">Commencer</a>
@@ -64,21 +71,28 @@
                     <a href="" id="close">Terminer</a>
                     <br>
                 </div>
-                <div id="joueur2">
-                    <img src="icon/Bibaxx.png" alt="">
-                    <br>
-                    Bibaxx : <strong id="vie2"></strong> points
-                </div>
+                <div id="joueur1">
+                        <div id="bloc1Bibax">
+                                <img src="icon/Bibaxx.png" alt="">
+                                <br>
+                                Bibaxx : <strong id="vie2"></strong> points
+                        </div>
+                        <div id="bloc2Bibax">
+                               <img src="icon/bibaxArme.png" alt="" id='image1'>
+                                <br>
+                                Mon arme
+                        </div>
+                    </div>
             </div>
-            <h2 id="number">0</h2>
-            <button id='bouton'>clique moi</button>
-
+            <br><br><br><br><br><br>
             <br><br><br><br><br><br>
             <footer> Copyright, tous droits réservés. Nadèche JOSEPH</footer>
 </body>
 <script src="js/joueurs.js"></script>
 <script src="js/arme.js"></script>
+<script src="js/caseNoire.js"></script>
 <script src="js/aireJeu.js"></script>
+<script src="js/partie.js"></script>
 <script src="js/main.js"></script>
 
 </html>

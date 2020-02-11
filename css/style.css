@@ -49,15 +49,26 @@ header {
 
 /* Partie où seront affichées les informations liées aux joueurs en cours de jeu*/
 #lesJoueurs{
-    width: 80%;
+    width: 90%;
     height: 100px;
     display: flex;
     margin: auto;
     justify-content: space-between;
 }
 #joueur1, #joueur2{
-    width: 25%;
+    width: 45%;
     height: 150px;
+}
+
+
+#joueur1{
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+#bloc2Mizop, #bloc2Bibax{
+    width: 30%;
 }
 
 footer{
@@ -161,3 +172,27 @@ a{
 .mizop{
     background-image: url(../icon/MizopImage.png);
 }
+
+.partieArmeMizop{
+    background-image: url(../icon/mizopArme.png);
+}
+
+.bibaxArme{
+    background-image: url(../icon/bibaxArme.png);
+}
+
+/*
+
+#firstDiv{
+    width: 100%;
+    height: 50px;
+    background-image: url(../icon/tridentImage.png);
+}
+
+#secondDiv{
+    width: 100%;
+    height: 50px;
+    background-color: red;
+    text-align: center;
+    padding-top: 5px;
+}*/
