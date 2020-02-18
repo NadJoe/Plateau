@@ -5,13 +5,15 @@
 
 class Joueur{
     // CHAQUE joueur à une image qui lui est propre donc il faut la mettre à la création de chaque objet de type joueur
-    constructor (numero, nom, vie){
+    constructor (numero, nom, vie, weapon){
         this.numero = numero
         this.nom = nom;
         this._vie = vie;
+        this.weapon = weapon;
         this.position = {x: undefined, y: undefined};
         this.caseVie = document.getElementById('vie'+this.numero);
         this.caseVie.textContent = this._vie;
+       
     }
 
 

@@ -38,40 +38,44 @@ class Partie{
     }
 
     endTurn(){
-        //console.log("endTurn");
-        console.log(this.joueurs[this.currentPlayer].position.x);
         if(($('td#UneCase-' + this.joueurs[this.currentPlayer].position.x + '-' + this.joueurs[this.currentPlayer].position.y)).hasClass('UneArme')){
-            alert('Arme detectée');
             // chercher à savoir sur quelle arme on est placer
             let classes = ($('td#UneCase-' + this.joueurs[this.currentPlayer].position.x + '-' + this.joueurs[this.currentPlayer].position.y)).attr("class").split(/\s+/);
-            console.log(classes[2]);
             let nomArme = classes[2];
             // recuperer l'arme dans le tableau des armes 
-            console.log(this._armes);
+            //console.log(this._armes);
             
-            /*let arme;
-            for (let index = 0; index < this._armes.length; index++) {
-                if(this._armes[index]._nom == nomArme) {
-                    arme = this._armes[index];
-                }
-            }*/
             let armeTrouvee = this._armes.find(element => element._nom === nomArme);
-            //console.log(arme);
             console.log(armeTrouvee._nom);
-
-            //let tabArmeJoueur = ['mizopArme','bibaxArme'];
             // garder en memoire l'arme du joueur
-            let armeJoueur;
+            let armeJoueur = this.joueurs[this.currentPlayer].weapon;
+            this.joueurs[this.currentPlayer].weapon = armeTrouvee;
+
 
             // donner au joueur le nouvel arme
             if(this.currentPlayer==1){
-                document.getElementById('image1').innerHTML = "" ;
-                $('#image1').addClass(armeTrouvee._nom);
+                $('#image1').attr("src",'icon/'+armeTrouvee._nom+'.png');
+                $('td#UneCase-' + this.joueurs[this.currentPlayer].position.x + '-' + this.joueurs[this.currentPlayer].position.y).addClass('gris');
+                console.log('position Joueur 1 : X : ' + this.joueurs[this.currentPlayer].position.x + ' Y : ' +this.joueurs[this.currentPlayer].position.y);
+                /*let positionArme = {
+                    x: this.joueurs[this.currentPlayer].position.x ,
+                    y: this.joueurs[this.currentPlayer].position.y
+                }
+                console.log(positionArme);
+                $('th#UneCase-'+ positionArme.x + '-' + positionArme.y).addClass('blabla');*/
             }else if(this.currentPlayer==0){
-                document.getElementById('image2').innerHTML = "" ;
-                $('#image2').addClass(armeTrouvee._nom);
+                $('#image2') .attr("src",'icon/'+armeTrouvee._nom+'.png');
+                console.log('position Joueur 0 : X : ' + this.joueurs[this.currentPlayer].position.x + ' Y : ' +this.joueurs[this.currentPlayer].position.y);
+                $('td#UneCase-' + this.joueurs[this.currentPlayer].position.x + '-' + this.joueurs[this.currentPlayer].position.y).addClass('gris');
+                /*let positionArme = {
+                    x: this.joueurs[this.currentPlayer].position.x ,
+                    y: this.joueurs[this.currentPlayer].position.y
+                }
+                console.log(positionArme);
+                $('th#UneCase-'+ positionArme.x + '-' + positionArme.y).addClass('blabla');*/
             }
             // mettre l'ancienne arme sur le plateau (arme du joueur)
+            
         }
 
         // Si les deux joueurs se retrouvent cote à cote il faut annoncer le combat

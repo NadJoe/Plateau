@@ -21,8 +21,9 @@ let tableauArmes = [
         degats: 10
     }];
 
-let joueur1 = new Joueur(1, 'mizop', 100);
-let joueur2 = new Joueur(2, 'bibaxx', 100)
+    
+let joueur1 = new Joueur(1, 'mizop', 100, new Arme('mizopArme', 10));
+let joueur2 = new Joueur(2, 'bibaxx', 100, new Arme('bibaxArme', 10))
 
 let partie = new Partie(area, tableauArmes, joueur1, joueur2);  
 partie.miseEnplace();
